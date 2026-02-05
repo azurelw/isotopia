@@ -26,7 +26,7 @@ window:SetToggleKey(Enum.KeyCode.Insert)
 local tab = window:Tab({ Title = "Main", Icon = "home" })
 local section = tab:Section({ Side = "left" })
 
-section:Toggle({
+local myToggle = section:Toggle({
     Title = "My Toggle",
     Description = "Enable/disable feature",
     Default = false,
@@ -40,13 +40,45 @@ section:Button({
 })
 
 window:load()
-```
 
 📑 API Reference
 <details>
+<summary><b>⚙️ Settings Configurations (Table Definitions)</b></summary>
+Window Settings
+{
+    Title = string,                 -- Window title
+    Icon = string,                  -- Lucide icon name or ID
+    MainColor = Color3,             -- Accent color
+    Transparent = boolean,          -- Background transparency
+    Size = UDim2,                   -- Initial size
+    Spinning = boolean,             -- Icon rotation state
+    AnimatedTitle = {               -- Optional title animation
+        AnimationColor = Color3,
+        AnimationSide = string,     -- "Left" or "Right"
+        AnimationSpeed = number
+    }
+}
+
+Module Settings (General)
+{
+    Title = string,
+    Description = string,           -- Subtext for the module
+    Default = any,                  -- Initial value
+    Callback = function(v) end,     -- Function triggered on change
+    -- Dropdown specific
+    Values = {"Option 1", "Option 2"}
+    -- Slider specific
+    Min = number,
+    Max = number
+}
+
+</details>
+<details>
 <summary><b>🪟 Window Functions</b></summary>
-    
+
 ```lua
+local window = Isotopia:Window(settings)
+
 window:load()                           -- Loads and displays the window
 window:Toggle()                         -- Toggles window minimize/open
 window:change_visiblity(state)          -- Changes window visibility (true/false)
@@ -63,33 +95,33 @@ window:GetToggleKey()                   -- Returns toggle key
 window:ClearToggleKey()                 -- Clears toggle keybind
 window:SetSpinning(state)               -- Toggles icon spinning
 window:GetSpinning()                    -- Returns spinning state
-window:update_tabs(tab)                 -- Internal: Updates active tab
-window:update_sections(left, right)     -- Internal: Updates visible sections
-window:flag_type(flag, flag_type)       -- Checks flag type in config
 ```
 </details>
 <details>
 <summary><b>📂 Tab & Section Functions</b></summary>
-    
+
 ```lua
 -- Tab Manager
-tabManager:Section(settings)            -- Creates a new section
+local tab = window:Tab(settings)
 
--- Section Modules
-section:Toggle(settings)                -- Creates a toggle module
-section:Button(settings)                -- Creates a button module
-section:Slider(settings)                -- Creates a slider module
-section:Dropdown(settings)              -- Creates a dropdown module
-section:Label(settings)                 -- Creates a label module
-section:Checkbox(settings)              -- Creates a checkbox module
-section:Input(settings)                 -- Creates an input module
-section:Divider(settings)               -- Creates a divider module
+-- Section Manager
+local section = tab:Section(settings)
+
+-- Creating Modules
+local toggle = section:Toggle(settings)
+local button = section:Button(settings)
+local slider = section:Slider(settings)
+local dropdown = section:Dropdown(settings)
+local label = section:Label(settings)
+local checkbox = section:Checkbox(settings)
+local input = section:Input(settings)
+local divider = section:Divider(settings)
 ```
 </details>
 <details>
 <summary><b>🧩 Module-Specific Methods</b></summary>
 Toggle Module
-    
+
 ```lua
 toggle:Toggle(value)                    -- Toggles state (or sets specific value)
 
@@ -115,9 +147,9 @@ input:update_text(text)                 -- Updates input text
 <details>
 <summary><b>🛠️ Utilities & Notifications</b></summary>
 Notifications
-    
+
 ```lua
-Isotopia:Notify(settings)               -- Creates a notification
+Isotopia:Notify(settings)               -- Creates a notification popup
 
 Utility Functions
 Isotopia.Theme                          -- Theme colors table
