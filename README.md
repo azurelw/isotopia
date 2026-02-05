@@ -40,6 +40,7 @@ section:Button({
 })
 
 window:load()
+```
 
 📑 API Reference
 <details>
