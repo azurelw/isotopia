@@ -44,64 +44,80 @@ window:load()
 📑 API Reference
 <details>
 <summary><b>🪟 Window Functions</b></summary>
-| Function | Parameters | Description |
-|---|---|---|
-| window:load() | None | Loads and displays the window. |
-| window:Toggle() | None | Toggles window minimize/open. |
-| window:change_visiblity(state) | boolean | Changes window visibility. |
-| window:EditOpenButton(settings) | table | Customize minimize button behavior. |
-| window:SetMainColor(color) | Color3 | Changes the main accent color. |
-| window:SetSize(newSize) | UDim2 | Changes window size. |
-| window:SetTransparent(state) | boolean | Toggles transparency. |
-| window:SetToggleKey(keyCode) | Enum | Sets window toggle keybind. |
-| window:SetSpinning(state) | boolean | Toggles icon spinning. |
-| window:SetAnimationSettings(s) | table | Configures title animation. |
+window:load()                           -- Loads and displays the window
+window:Toggle()                         -- Toggles window minimize/open
+window:change_visiblity(state)          -- Changes window visibility (true/false)
+window:EditOpenButton(settings)         -- Customize minimize button behavior
+window:SetMainColor(color)              -- Changes the main accent color
+window:SetSize(newSize)                 -- Changes window size (UDim2)
+window:GetSize()                        -- Returns current window size
+window:SetTransparent(state)            -- Toggles transparency
+window:GetTransparent()                 -- Returns transparency state
+window:SetAnimationSettings(settings)   -- Configures title animation
+window:GetAnimationSettings()           -- Returns animation settings
+window:SetToggleKey(keyCode)            -- Sets window toggle keybind
+window:GetToggleKey()                   -- Returns toggle key
+window:ClearToggleKey()                 -- Clears toggle keybind
+window:SetSpinning(state)               -- Toggles icon spinning
+window:GetSpinning()                    -- Returns spinning state
+window:update_tabs(tab)                 -- Internal: Updates active tab
+window:update_sections(left, right)     -- Internal: Updates visible sections
+window:flag_type(flag, flag_type)       -- Checks flag type in config
+
 </details>
 <details>
 <summary><b>📂 Tab & Section Functions</b></summary>
-Tab
-local tab = window:Tab({ Title = "Name", Icon = "id" })
- * tab:Section({ Side = "left" }): Creates a new section on the specified side.
-Section Modules
- * section:Toggle({Title, Description, Default, Callback})
- * section:Button({Title, Description, Callback})
- * section:Slider({Title, Min, Max, Default, Callback})
- * section:Dropdown({Title, Values, Default, Callback})
- * section:Input({Title, Callback})
- * section:Checkbox({Title, Callback})
- * section:Label({Title})
- * section:Divider()
+-- Tab Manager
+tabManager:Section(settings)            -- Creates a new section
+
+-- Section Modules
+section:Toggle(settings)                -- Creates a toggle module
+section:Button(settings)                -- Creates a button module
+section:Slider(settings)                -- Creates a slider module
+section:Dropdown(settings)              -- Creates a dropdown module
+section:Label(settings)                 -- Creates a label module
+section:Checkbox(settings)              -- Creates a checkbox module
+section:Input(settings)                 -- Creates an input module
+section:Divider(settings)               -- Creates a divider module
+
 </details>
 <details>
 <summary><b>🧩 Module-Specific Methods</b></summary>
 Toggle Module
- * toggle:Toggle(value): Sets or toggles state.
+toggle:Toggle(value)                    -- Toggles state (or sets specific value)
+
 Slider Module
- * slider:Set(value): Sets slider to specific value.
+slider:Set(value)                       -- Sets slider value
+
 Dropdown Module
- * dropdown:Set(value, isToggle): Sets value.
- * dropdown:GetValue(): Returns current selection.
- * dropdown:Clear(): Resets the dropdown.
+dropdown:Set(value, isToggle)           -- Sets dropdown value
+dropdown:Toggle()                       -- Toggles dropdown visibility
+dropdown:GetValue()                     -- Returns current value(s)
+dropdown:SetValue(value)                -- Sets value directly
+dropdown:Clear()                        -- Clears selection
+
 Checkbox Module
- * checkbox:change_state(state): Changes state.
- * checkbox:connect_keybind(): Listens for keybind.
+checkbox:change_state(state)            -- Changes checkbox state
+checkbox:scale_keybind(empty)           -- Adjusts keybind UI size
+checkbox:connect_keybind()              -- Connects keybind listener
+
 Input Module
- * input:update_text(text): Updates the text field.
+input:update_text(text)                 -- Updates input text
+
 </details>
 <details>
 <summary><b>🛠️ Utilities & Notifications</b></summary>
 Notifications
-Isotopia:Notify({
-    Title = "Notification",
-    Content = "Hello from Isotopia!",
-    Duration = 5
-})
+Isotopia:Notify(settings)               -- Creates a notification
 
 Utility Functions
- * Isotopia.Theme: Access theme colors.
- * Config:save(file, config): Save settings to file.
- * Config:load(file, config): Load settings from file.
- * Util:map(v, iMin, iMax, oMin, oMax): Maps value ranges.
- * Util:viewport_point_to_world(loc, dist): Conversion helper.
+Isotopia.Theme                          -- Theme colors table
+Config:save(file_name, config)          -- Saves configuration
+Config:load(file_name, config)          -- Loads configuration
+Util:map(value, in_min, in_max, out_min, out_max) -- Maps value ranges
+Util:viewport_point_to_world(location, distance) -- Converts viewport to world
+Util:get_offset()                       -- Gets UI offset based on screen size
+
 </details>
+Built with ❤️
 
