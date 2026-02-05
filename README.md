@@ -70,6 +70,7 @@ window:flag_type(flag, flag_type)       -- Checks flag type in config
 </details>
 <details>
 <summary><b>📂 Tab & Section Functions</b></summary>
+    
 ```lua
 -- Tab Manager
 tabManager:Section(settings)            -- Creates a new section
@@ -88,6 +89,7 @@ section:Divider(settings)               -- Creates a divider module
 <details>
 <summary><b>🧩 Module-Specific Methods</b></summary>
 Toggle Module
+    
 ```lua
 toggle:Toggle(value)                    -- Toggles state (or sets specific value)
 
@@ -113,6 +115,7 @@ input:update_text(text)                 -- Updates input text
 <details>
 <summary><b>🛠️ Utilities & Notifications</b></summary>
 Notifications
+    
 ```lua
 Isotopia:Notify(settings)               -- Creates a notification
 
