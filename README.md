@@ -44,7 +44,9 @@ window:load()
 
 📑 API Reference
 <details>
-<summary><b>🪟 Window Functions</b></summary>```lua
+<summary><b>🪟 Window Functions</b></summary>
+    
+```lua
 window:load()                           -- Loads and displays the window
 window:Toggle()                         -- Toggles window minimize/open
 window:change_visiblity(state)          -- Changes window visibility (true/false)
