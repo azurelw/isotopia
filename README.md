@@ -40,7 +40,7 @@ section:Button({
 })
 
 window:load()
-
+```
 📑 API Reference
 <details>
 <summary><b>⚙️ Settings Configurations (Table Definitions)</b></summary>
