@@ -44,6 +44,8 @@ window:load()
 📑 API Reference
 <details>
 <summary><b>⚙️ Settings Configurations (Table Definitions)</b></summary>
+
+```lua
 Window Settings
 {
     Title = string,                 -- Window title
@@ -71,7 +73,7 @@ Module Settings (General)
     Min = number,
     Max = number
 }
-
+```
 </details>
 <details>
 <summary><b>🪟 Window Functions</b></summary>
