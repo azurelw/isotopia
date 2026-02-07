@@ -1,6 +1,6 @@
 --[[
-    This is only example code, consider seeing documentation: <link>
-    And for reporting bugs, suggestions, modifications: <link>
+    This is only example code, consider seeing documentation: https://github.com/azurelw/isotopia/blob/main/README.md
+    And for reporting bugs, suggestions, modifications: https://discord.gg/XVC3B3GJ9g
 ]]
 local Isotopia = loadstring(game:HttpGet("https://raw.githubusercontent.com/azurelw/isotopia/refs/heads/main/loader.lua"))()
 
@@ -30,11 +30,18 @@ local Tab = Window:Tab({
     Title = "Main",
     Icon = "house"
 })
+local Tab2 = Window:Tab({
+    Title = "Configuration",
+    Icon = "settings"
+})
 local Section = Tab:Section({
     Side = "left"
 })
 local Section2 = Tab:Section({
     Side = "right"
+})
+local Section3 = Tab2:Section({
+    Side = "left"
 })
 
 local Module = Section:Module({
@@ -45,26 +52,26 @@ local Module = Section:Module({
     Callback = function(state)
     end
 })
-
-Module:Checkbox({
-    Title = "Enable Feature",
-    Flag = "checkbox_example",
+Module:Dropdown({
+    Title = "Test Dropdown",
+    Values = {"Low", "Medium", "High", "Ultra", "Default"},
+    Value = "Default",
+    Flag = "dropdown_example",
     Locked = false,
-    Callback = function(state)
-        print("Feature enabled:", state)
+    Callback = function(option)
+        print("Quality set to:", option)
     end
 })
-
-Module:Input({
-    Title = "Username",
-    placeholder = "Enter your name...",
-    Flag = "input_example",
+Module:Dropdown({
+    Title = "Dropdown Values",
+    Values = {"Good", "Pizza", "Noob"},
+    Value = "Pro",
+    Flag = "dropdown_example2",
     Locked = false,
-    callback = function(text)
-        print("Username:", text)
+    Callback = function(option)
+        print("DropdownValue set to:", option)
     end
 })
-Module:Divider({ Title = "Settings" })
 Module:Slider({
     Title = "Volume",
     Value = { Min = 0, Max = 100, Default = 50 },
@@ -74,14 +81,37 @@ Module:Slider({
         print("Volume:", value)
     end
 })
-Module:Dropdown({
-    Title = "Quality",
-    Values = {"Low", "Medium", "High", "Ultra"},
-    Default = "Medium",
-    Flag = "dropdown_example",
+Module:Divider()
+Module:Checkbox({
+    Title = "Enable Feature",
+    Flag = "checkbox_example",
     Locked = false,
-    Callback = function(option)
-        print("Quality set to:", option)
+    Callback = function(state)
+        print("Feature enabled:", state)
+    end
+})
+Module:Checkbox({
+    Title = "Auto Pizza",
+    Flag = "checkbox_example2",
+    Locked = false,
+    Callback = function(state)
+        print("Auto Pizza enabled:", state)
+    end
+})
+Module:Checkbox({
+    Title = "Lock In",
+    Flag = "checkbox_example3",
+    Locked = false,
+    Callback = function(state)
+        print("Lock In enabled:", state)
+    end
+})
+Module:Checkbox({
+    Title = "Drawing",
+    Flag = "checkbox_example4",
+    Locked = false,
+    Callback = function(state)
+        print("Drawing enabled:", state)
     end
 })
 
@@ -92,7 +122,52 @@ Section2:Button({
         Window:SetTransparent()
     end
 })
+
+Section3:Label({
+    Text = "I said this is empty label.",
+    Title = "Empty Label",
+    Description = "Common description.",
+    Default = false
+})
 Window:load()
+
+--[[ input example:
+:Input({
+    Title = "Username",
+    placeholder = "Enter your name...",
+    Flag = "input_example",
+    Locked = false,
+    callback = function(text)
+        print("Username:", text)
+    end
+})
+
+button example:
+:Button({
+    Title = "Cucumber",
+    Locked = false,
+    Callback = function()
+    end
+})
+
+checkbox example:
+:Checkbox({
+    Title = "Get Pizza",
+    Flag = "get_pizza",
+    Locked = false,
+    Callback = function(state)
+        print(state)
+    end
+})
+
+label example:
+:Label({
+    Text = "This is Test Label. Why did you open this?",
+    Title = "Test Label",
+    Description = "Can't you see test label?",
+    Default = true -- module expanded by default?
+})
+]]
 
 --[[ All Possible Methods:
 ###Window Methods:
