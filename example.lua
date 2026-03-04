@@ -14,7 +14,7 @@ local Window = Isotopia:Window({
     HideSearchBar = false,
     Corner = 15,
     AnimatedTitle = {
-        AnimationColor = Color3.fromRGB(220, 247, 255),
+        AnimationColor = Color3.fromRGB(0,0,0),
         AnimationSide = "Left", -- (Right, Left)
         AnimationSpeed = 2 -- higher = slower
     }
