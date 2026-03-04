@@ -12,10 +12,11 @@ local Window = Isotopia:Window({
     MainColor = Color3.fromRGB(180, 207, 229),
     Spinning = true, -- icon spinning?
     HideSearchBar = false,
+    Corner = 15,
     AnimatedTitle = {
         AnimationColor = Color3.fromRGB(220, 247, 255),
-        AnimationSide = "Right", -- (Right, Left)
-        AnimationSpeed = 3 -- higher = slower
+        AnimationSide = "Left", -- (Right, Left)
+        AnimationSpeed = 2 -- higher = slower
     }
 })
 Window:SetToggleKey(Enum.KeyCode.K)
